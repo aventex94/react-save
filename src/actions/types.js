@@ -1,0 +1,3 @@
+export const ADD_PRODUCT = "ADD_PRODUCT"
+export const SET_LOGIN = "SET_LOGIN"
+export const GET_TEMPERATURE = "GET_TEMPERATURE"

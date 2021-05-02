@@ -6,9 +6,9 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { useDispatch, useSelector } from "react-redux";
-import { setLogin } from "../actions/user";
+import { setUser } from "../actions/auth";
 import { useHistory } from "react-router-dom";
-import { temperature} from "../actions/temperature"
+
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
@@ -19,11 +19,11 @@ const useStyles = makeStyles({
 const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { loggin } = useSelector((state) => state.user);
+
   const classes = useStyles();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
+  const users = useSelector((state) => state.user);
   const onChangeUsername = (e) => {
     let userName = e.target.value;
     setUserName(userName);
@@ -33,18 +33,17 @@ const Login = () => {
     setPassword(password);
   };
   const onSubmit = (e) => {
-    /* e.preventDefault();
-    dispatch(setLogin(userName, password));
-    if (loggin) {
-      history.push("/product"); */
-      e.preventDefault();
-      dispatch(temperature()).then((response)=>{
-        console.log(response);
-      }).catch((err)=>{
-        console.log(err);
-      })
-  }
-  
+    e.preventDefault();
+    users.map((u) => {
+      if (u._username === userName && u._password === password) {
+        dispatch(setUser(u));
+        history.push("/home")
+      }else{
+
+      }
+    });
+  };
+
   return (
     <Card className={classes.root}>
       <form onSubmit={onSubmit}>
@@ -74,4 +73,4 @@ const Login = () => {
   );
 };
 
-export default Login
+export default Login;

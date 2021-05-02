@@ -13,7 +13,6 @@ const getTemperature = async() =>{
         
     })
     .then(response=>{
-        localStorage.setItem("temperature", JSON.stringify(response.data))
         return response.data;
 
     }).catch(err => {

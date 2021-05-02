@@ -1,11 +1,25 @@
 import { combineReducers } from "redux";
-import product from "./product";
-import user from "./user";
+import { persistReducer } from 'redux-persist';
+import auth from "./auth";
 import temperature from "./temperature"
+import storage from 'redux-persist/lib/storage';
+import user from './user';
+import meet from './meet';
+const persistConfig = {
+  key: 'root',
+  storage,
+  witheList:[
+      'user',
+      'temperature',
+      'meet',
+      'auth',
+  ]
+}
 const rootReducer = combineReducers({
-  product,
+  auth,
+  temperature,
   user,
-  temperature
+  meet,
 });
 
-export default rootReducer;
+export default persistReducer(persistConfig,rootReducer)

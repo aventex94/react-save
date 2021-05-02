@@ -1,3 +1,5 @@
 export const ADD_PRODUCT = "ADD_PRODUCT"
-export const SET_LOGIN = "SET_LOGIN"
+export const SET_USER = "SET_USER"
 export const GET_TEMPERATURE = "GET_TEMPERATURE"
+export const SEARCH_USER = "SEARCH_USER"
+export const ADD_MEET = "ADD_MEET"

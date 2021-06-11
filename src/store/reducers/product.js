@@ -8,7 +8,12 @@ const initialState = [
   },
   { id: 2, descrip: "HONEY", monto: "$30" },
 ];
-
+/**
+ * 
+ * @param {*} state 
+ * @param {*} action 
+ * @returns 
+ */
 export default function product(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {

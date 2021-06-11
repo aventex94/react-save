@@ -1,5 +1,9 @@
 import { GET_TEMPERATURE } from "./types";
 import TemperatureService from "../../src/service/temperature";
+/**
+ * 
+ * @returns 
+ */
 export const temperature = () => (dispatch) => {
   return TemperatureService.getTemperature().then(
     (data) => {
@@ -7,10 +11,10 @@ export const temperature = () => (dispatch) => {
         type: GET_TEMPERATURE,
         payload: { data: data },
       });
-      return Promise.resolve();
+      return Promise.resolve(data);
     },
-    (error) => {
-      return Promise.reject();
+    (err) => {
+      return Promise.reject(err);
     }
   );
 };

@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Deploy LOCAL
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Git clone del proyecto
 
-## Available Scripts
+Ejecutar npm install
 
-In the project directory, you can run:
+Ejecutar npm start
 
-### `yarn start`
+# Deploy PROD
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+npm run build
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+fetch del server ==> build/index.html
 
-### `yarn test`
+# Consideraciones generales del challenge
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Se hicieron las siguientes historias de usuario:
 
-### `yarn build`
+• Como admin quiero saber cuantas cajas de birras tengo que comprar para poder aprovisionar la meetup.
+• Como admin y usuario quiero conocer la temperatura del dia de la meetup para saber si va a hacer calor o no.
+• Como admin quiero armar una meetup para poder invitar a otras personas.
+• Como usuario quiero inscribirme en una meetup para para asistir (tambien lo puede hacer el admin)
+## Ramas 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Se utilizo la rama master como desarrollo por que el fin del proyecto es una prueba tecnica y el desarrollo lo realiza una sola persona. (Se podria haber utilizado una rama dev y luego mergear con master y generar un tag con su versión)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Desarrollo
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Se desarrollo front y no back, pero si, se simulo un back en memoria con redux utilizando el store. Se utilizo un persistor en cache para que guarde la informacion, pero la app, al primer inicio, no tendra informacion. Si estara la informacion de los usuarios para poder loguearse.
+Con respecto a Test, conozco sobre el concepto testing de unidad y realice algunos test con Jest en algunos back que tengo con node js, pero no llegue a realizarlo por temas de tiempo.
 
-### `yarn eject`
+## Lista de usuarios:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+username: ADMIN
+password: 123456
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+username: COMMON
+password: 654321
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+username: COMMON2
+password: 654321
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+username: COMMON3
+password: 654321
 
-## Learn More
+# Consideraciones generales técnicas
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Solución 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Para el problema de las cervezas se dicidio utilizar 2 patrones:
 
-### Code Splitting
+Un strategy para manejar el calculo de la cantidad de cervezas que necesita la meet.
+Un factory para instanciar a la strategy correspondiente segun la temperatura.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Se podria haber utilizado un state, o simplemente herencia, dado que el codigo de los strategy, en este caso, es igual. Pero se dicidio utilizarlo para dejar el conocimiento del patron y ademas es una buena practica por si el calculo de la cantidad de cervezas en un futuro evoluciona.
 
-### Analyzing the Bundle Size
+## Persistencia de datos 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Se utilizo el store con redux y persistor para mantenerlo en cache.
 
-### Making a Progressive Web App
+## Maquetado e interfaz grafica 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Se utilizo Material ui y Reactstrap. Sinceramente no me gusto como quedo el maquetado. La documentacion de Material ui no es muy buena y por temas de tiempo y trabajo personal no pude mejorarlo. Pero entiendo y reconozco que no es la mejor forma de hacerlo. 
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

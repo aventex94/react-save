@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Nav from "./Nav";
-import { Directions } from "@material-ui/icons";
-
+import { Container } from "reactstrap";
 const useStyles = makeStyles({
-  mainPage: {},
   mainLayout: {
     display: "flex",
+    flexWrap:"wrap",
+    justifyContent:"center",
+    paddingTop:"50px"
+    
   },
 });
 
@@ -14,11 +16,14 @@ const Main = (props) => {
   const classes = useStyles();
   const { children } = props;
   return (
-    <main className={classes.mainPage}>
+    <>
       <Nav />
-       
-      <div className={classes.mainLayout}>{children}</div>
-    </main>
+      <Container className={classes.mainLayout}>
+      
+        {children}
+     
+      </Container>
+    </>
   );
 };
 

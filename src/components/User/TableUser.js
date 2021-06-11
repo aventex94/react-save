@@ -21,7 +21,7 @@ import Button from "@material-ui/core/Button";
 const useStyles1 = makeStyles((theme) => ({
   root: {
     flexShrink: 0,
-    marginLeft: theme.spacing(2.5),
+    marginLeft: theme.spacing(30),
   },
 }));
 
@@ -102,8 +102,9 @@ const useStyles2 = makeStyles({
 });
 
 export default function TableUser(prop) {
+  const inviteUser = prop.inviteUser;
   const rows = prop.rows;
-  console.log(rows);
+  const invite = prop.invite;
   const classes = useStyles2();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -118,7 +119,9 @@ export default function TableUser(prop) {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-
+  const handleInvite = (user) =>{
+      inviteUser(user);
+  }
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="custom pagination table">
@@ -135,7 +138,8 @@ export default function TableUser(prop) {
                 {row._rol}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
-                <Button variant="contained" color="primary">Invite</Button>
+                
+                <Button disabled={invite} onClick={()=> handleInvite(row)} variant="contained" color="primary">Invite</Button>
               </TableCell>
             </TableRow>
           ))}
